@@ -1,0 +1,9 @@
+name: SimpleTrail
+version: 0.2
+description: player dies when he tries to use spawnereggs
+author: Theverat
+website: http://www.crusoecraft.net
+
+main: me.Theverat.simpletrail.simpletrail
+
+depend: [WorldGuard]
