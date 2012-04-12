@@ -16,18 +16,21 @@ public class Playerlistener implements Listener {
 	public void playermoveevent(PlayerMoveEvent event) {
 
 		Player p = event.getPlayer();
-		Block StandsOn = p.getLocation().subtract(0, 1, 0).getBlock();
+		//Block StandsOn = p.getLocation().subtract(0, 1, 0).getBlock();
 		Block AboveStandsOn = p.getLocation().getBlock();
 		double randomvalue = Math.random();
 
 		if (canPlayerBuild(p) == true) {
 
-			// if the player is standing on grass, replace it with dirt
+			/*--------------------------------------------------------------
+			 * FEATURE REMOVED: if the player is standing on grass, replace it with dirt
+			
 			if (StandsOn.getTypeId() == 2) {
 				if (randomvalue >= 0.8) { // random factor
 					StandsOn.setTypeId(3);
 				}
 			}
+			--------------------------------------------------------------*/
 
 			// if the block above the one the player stands on is weed or a
 			// flower, replace it with air
@@ -51,7 +54,7 @@ public class Playerlistener implements Listener {
 			else
 				return false;
 		} else if (mainpluginclass.worldGuard == null) { //what to do if no WorldGuard instance was found
-			player.sendMessage("SimpleTrail debug: worldguard not found!"); //DEBUG-message -> delete when WG bug is resolved
+			//player.sendMessage("SimpleTrail debug: worldguard not found!"); //DEBUG-message -> delete when WG bug is resolved
 		}
 		return true; //the plugin also works without WorldGuard, thus the "true" return even if no WorldGuard was found
 	}
