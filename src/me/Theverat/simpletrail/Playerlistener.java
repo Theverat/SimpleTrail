@@ -42,8 +42,7 @@ public class Playerlistener implements Listener {
 	}
 
 	private boolean canPlayerBuild(Player player) {
-		// Make sure that a WorldGuard instance was found
-		if (mainpluginclass.worldGuard != null) {
+		if (mainpluginclass.worldGuard != null) { // Make sure that a WorldGuard instance was found
 			// Get the players location
 			Location playerloc = player.getLocation().subtract(0, 1, 0);
 
@@ -51,9 +50,9 @@ public class Playerlistener implements Listener {
 				return true;
 			else
 				return false;
-		} else if (mainpluginclass.worldGuard == null){
-			player.sendMessage("SimpleTrail debug: worldguard not found!");
+		} else if (mainpluginclass.worldGuard == null) { //what to do if no WorldGuard instance was found
+			player.sendMessage("SimpleTrail debug: worldguard not found!"); //DEBUG-message -> delete when WG bug is resolved
 		}
-		return true;
+		return true; //the plugin also works without WorldGuard, thus the "true" return even if no WorldGuard was found
 	}
 }
