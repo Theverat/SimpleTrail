@@ -20,8 +20,10 @@ public class Playerlistener implements Listener {
 		Block AboveStandsOn = p.getLocation().getBlock();
 		double randomvalue = Math.random();
 
-		if (canPlayerBuild(p) == true) {
-
+		if (WGcanPlayerBuild(p) == true) {
+			
+			if(PScanPlayerBuild(p, AboveStandsOn) == true) {
+				
 			/*--------------------------------------------------------------
 			 * FEATURE REMOVED: if the player is standing on grass, replace it with dirt
 			
@@ -41,10 +43,11 @@ public class Playerlistener implements Listener {
 					AboveStandsOn.setTypeId(0);
 				}
 			}
+			}
 		}
 	}
 
-	private boolean canPlayerBuild(Player player) {
+	private boolean WGcanPlayerBuild (Player player) {
 		if (mainpluginclass.worldGuard != null) { // Make sure that a WorldGuard instance was found
 			// Get the players location
 			Location playerloc = player.getLocation().subtract(0, 1, 0);
@@ -57,5 +60,23 @@ public class Playerlistener implements Listener {
 			//player.sendMessage("SimpleTrail debug: worldguard not found!"); //DEBUG-message -> delete when WG bug is resolved
 		}
 		return true; //the plugin also works without WorldGuard, thus the "true" return even if no WorldGuard was found
+	}
+	
+	private boolean PScanPlayerBuild (Player player, Block block)
+	{
+		if (mainpluginclass.preciousStones != null) {
+			if (mainpluginclass.preciousStones.getForceFieldManager().isAllowed(
+					mainpluginclass.preciousStones.getForceFieldManager().getField(block), player.getName()) == false) {
+				return false;
+			}
+			else if (mainpluginclass.preciousStones.getForceFieldManager().getOwner(block) == player.getName()){
+				return true;
+			}
+			return true;
+		}
+		else if (mainpluginclass.preciousStones == null) {
+			player.sendMessage("SimpleTrail debug: PreciousStones not found!");
+		}
+		return true; //the plugin also works without PreciousStones, thus the "true" return even if no PS was found
 	}
 }
