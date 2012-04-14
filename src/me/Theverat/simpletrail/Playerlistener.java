@@ -57,7 +57,7 @@ public class Playerlistener implements Listener {
 			else
 				return false;
 		} else if (mainpluginclass.worldGuard == null) { //what to do if no WorldGuard instance was found
-			//player.sendMessage("SimpleTrail debug: worldguard not found!"); //DEBUG-message -> delete when WG bug is resolved
+			player.sendMessage("SimpleTrail debug: worldguard not found!"); //DEBUG-message -> delete when WG bug is resolved
 		}
 		return true; //the plugin also works without WorldGuard, thus the "true" return even if no WorldGuard was found
 	}

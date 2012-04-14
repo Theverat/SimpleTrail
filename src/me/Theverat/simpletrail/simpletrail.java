@@ -53,7 +53,7 @@ public class simpletrail extends JavaPlugin {
 				.getPlugin("PreciousStones");
 
 		// PreciousStones may not be loaded
-		if (psplugin == null || !(psplugin instanceof WorldGuardPlugin)) {
+		if (psplugin == null || !(psplugin instanceof PreciousStones)) {
 			return null;
 		}
 		return (PreciousStones) psplugin;
